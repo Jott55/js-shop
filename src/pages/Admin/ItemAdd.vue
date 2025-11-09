@@ -3,13 +3,10 @@ import { ref } from 'vue';
 import ShopItem from '../Shop/ShopItem.vue';
 
 import { postProduct } from '@/fetchdata';
-import { ProductDefault } from '@/template';
+import { ProductCartDefault } from '@/template';
 import { deleteProduct } from '@/fetchdata';
 
-import {watch} from 'vue'
-import { useRoute} from 'vue-router'
-
-const product = ref(new ProductDefault());
+const product = ref(new ProductCartDefault());
 const items_length = ref(1);
 
 product.value.Id = items_length.value;

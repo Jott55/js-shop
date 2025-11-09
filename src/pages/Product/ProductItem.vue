@@ -1,29 +1,24 @@
 <script setup lang="ts">
 import defaultImage from '@/assets/noImage.svg'
+import {ProductCart, ProductCartDefault} from '@/template'
 
 const { 
-    image = defaultImage,
-    name = "undefined",
-    description = "lorem",
-    price = 420
-     } = defineProps({
-    image: String,
-    name: String,
-    description: String,
-    price: Number
+    product = new ProductCartDefault()
+} = defineProps({
+    product: ProductCart
 })
 </script>
 <template>
     <div class="product-container">
-        <img :src="image" alt="no image available" class="product-image" />
-        <div class="product-content">
-            <h2 class="product-title">{{ name }}</h2>
+        <img :src="product.Image_url" alt="no image available" class="product-image" />
+        <div class="product-content" :id="'product-'+product.Id">
+            <h2 class="product-title">{{ product.Name }}</h2>
             <p class="product-info">
-                {{ description }}
+                {{ product.Description }}
             </p>
             <div class="product-payment">
                 <button class="product-button">Add it to cart</button>
-                <p class="product-price">${{ price }}</p>
+                <p class="product-price">${{ product.Price }}</p>
             </div>
         </div>
     </div>

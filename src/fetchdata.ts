@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { Product } from "./template";
+import { ProductCart } from "./template";
 
 const baseUrl = "http://localhost:8069/"
 
@@ -10,13 +10,9 @@ async function getData() {
     return res.data
 }
 
-async function postProduct(product: Product) {
+async function postProduct(product: ProductCart) {
     let res = await axios.post(baseUrl + "post/product", {
-        Id: product.Id,
-        Name: product.Name,
-        Image_url: product.Image_url,
-        Price: product.Price,
-        Description: product.Description
+        Product: product
     })
 
     console.log(res)

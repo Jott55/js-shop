@@ -1,21 +1,19 @@
 <script lang="ts" setup>
 import noImage from '@/assets/noImage.svg'
+import { Product, ProductDefault } from '@/template';
+
 const { 
-    image = noImage,
-    name = "undefined",
-    price = 1000000, 
+    product =  new ProductDefault() 
 } = defineProps({
-    image: String,
-    name: String,
-    price: Number
+    product: Product
 })
 </script>
 
 <template>
-    <div class="item">
-        <img :src="image" alt="no image available" class="image" />
-        <h4 class="name">{{ name }}</h4>
-        <p class="price">${{ price }}</p>
+    <div class="item" :id="'product'+product.Id">
+        <img :src="product.Image_url" alt="no image available" class="image" />
+        <h4 class="name">{{ product.Name }}</h4>
+        <p class="price">${{ product.Price }}</p>
     </div>
 </template>
 

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import CartItem from './CartItem.vue';
 
-import { ref } from 'vue';
-
 </script>
 <template>
     <ul class="cart-container">

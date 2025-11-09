@@ -4,11 +4,11 @@ import ShopContainer from './ShopContainer.vue'
 
 import {ref, watch} from 'vue'
 import { useRoute} from 'vue-router'
-import { ProductView } from '@/template';
+import { Product } from '@/template';
 
 const route = useRoute();
 
-const post = ref<ProductView[]>([]);
+const post = ref<Product[]>([]);
 const error = ref(null)
 const loading = ref(false)
 
@@ -16,7 +16,7 @@ watch(() => route.params.id, fetchData, {immediate: true})
 
 async function fetchData() {
   try {
-    let res: Array<ProductView> = await getData()
+    let res: Array<Product> = await getData()
     post.value = res
   } catch(err: any) {
     error.value = err

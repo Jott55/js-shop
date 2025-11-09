@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import defaultImg from '../../assets/noImage.svg'
 import { RouterLink } from 'vue-router'
-import { ProductView } from '@/template'
+import { Product } from '@/template'
 
 const moneySign = '$'
 
 const {
-  product = new ProductView(1, 'undefined', defaultImg, 3)
+  product = new Product(1, 'undefined', defaultImg, 3)
 } = defineProps({
-  product: ProductView
+  product: Product
 })
 </script>
 <template>
