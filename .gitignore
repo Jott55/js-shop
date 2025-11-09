@@ -34,7 +34,3 @@ coverage
 
 # Vitest
 __screenshots__/
-
-# Custom
-src/assets/*
-public/*
