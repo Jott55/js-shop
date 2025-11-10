@@ -13,10 +13,9 @@ const {
 
 <template>
   <div class="shop-container">
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
+    <div class="shop-item" v-for="item in shopItems">
+      <ShopItem :key="item.Id" :product="item" />
+    </div>
   </div>
 </template>
 

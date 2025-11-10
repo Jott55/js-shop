@@ -16,8 +16,12 @@ watch(() => route.params.id, fetchData, {immediate: true})
 
 async function fetchData() {
   try {
-    let res: Array<Product> = await getData()
-    post.value = res
+    let res = await getData()
+    if (res != null) {
+      post.value = res
+    } else {
+      throw new Error("response was null")
+    }
   } catch(err: any) {
     error.value = err
   } finally {
