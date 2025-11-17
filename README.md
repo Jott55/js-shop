@@ -1,5 +1,8 @@
 # js-shop
 
+## Node Version: ^24.11.1 Npm Version: ^11.6.2
+
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
