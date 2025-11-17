@@ -20,11 +20,13 @@ const { product = new Product() } = defineProps<{
   display: flex;
   column-gap: 1rem;
   align-items: center;
+  border: thick solid hsl(40, 100%, 60%);
+  margin: 1rem 0;
 }
 
 .image {
-  width: 20rem;
-  height: 20rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
 }
 

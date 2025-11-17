@@ -9,23 +9,23 @@ const products = ref<IProduct[]>()
 
 const fetchdata = async () => {
   const res = await getData()
-
+  console.log(res)
+  if (res) {
+    products.value = res
+  }
 }
 
 
 const route = useRoute()
-watch(() => route.params.id, () => fetchdata)
+watch(() => route.params.id, () => {
+  fetchdata()
+}, {immediate: true})
 </script>
 <template>
   <ul class="cart-container">
-    <CartItem />
-    <CartItem />
-    <CartItem />
-    <CartItem />
-    <CartItem />
-    <CartItem />
-    <CartItem />
-    <CartItem />
+      <li v-for="value in products" :key="'product-'+value.Id">
+        <CartItem :product="value" />
+      </li>
   </ul>
 </template>
 
