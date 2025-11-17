@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { User, UserDefault } from "@/template";
+import { User, type IUser } from "@/template";
 
-const { user = new UserDefault() } = defineProps({
-  user: User,
-});
+const { user = new User() } = defineProps<{
+    user: IUser
+}>();
 </script>
 
 <template>

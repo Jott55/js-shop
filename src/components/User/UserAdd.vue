@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { User, UserDefault } from "@/template";
+import { User } from "@/template";
 import UserCard from "./UserCard.vue";
 import { insertUser } from "@/fetchdata";
 
-const user = ref<User>(new UserDefault());
+const user = ref<User>(new User());
 
 const insert = async () => { 
     insertUser(user.value)

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import defaultImage from "@/assets/noImage.svg";
-import { ProductCart, ProductCartDefault } from "@/template";
+import { ProductCart, type IProductCart } from "@/template";
 
-const { product = new ProductCartDefault() } = defineProps({
-  product: ProductCart,
-});
+const { product = new ProductCart() } = defineProps<{
+  product?: IProductCart
+}>();
 </script>
 <template>
   <div class="product-container">

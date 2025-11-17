@@ -2,11 +2,11 @@
 import { ref } from "vue";
 import ShopItem from "../Shop/ShopItem.vue";
 
-import { postProduct, insertUser } from "@/fetchdata";
-import { ProductCartDefault, User } from "@/template";
+import { postProduct} from "@/fetchdata";
 import { deleteProduct } from "@/fetchdata";
+import { ProductCart } from "@/template";
 
-const product = ref(new ProductCartDefault());
+const product = ref(new ProductCart());
 const items_length = ref(1);
 
 product.value.Id = items_length.value;
@@ -17,9 +17,6 @@ const saveToJson = () => {
 
 const deleteProductById = () => {
   deleteProduct(product.value.Id);
-};
-const saveUser = () => {
-  insertUser(new User(1, "steve", "steve@example.com", "1234", "steve"));
 };
 </script>
 
@@ -60,10 +57,6 @@ const saveUser = () => {
     <div>
       <ShopItem :product="product" />
     </div>
-  </div>
-
-  <div class="container">
-    <button @click="saveUser">Add user 1</button>
   </div>
 </template>
 

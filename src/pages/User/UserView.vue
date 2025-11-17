@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, watch } from "vue";
 import UserCard from "../../components/User/UserCard.vue";
-import { User, UserDefault } from "@/template";
+import { User } from "@/template";
 import { getUser } from "@/fetchdata";
 import { useRoute } from "vue-router";
 
@@ -14,7 +14,7 @@ const fetchData = async () => {
   if (res != null) {
     userRef.value = res;
   } else {
-    userRef.value = new UserDefault();
+    userRef.value = new User();
   }
 };
 

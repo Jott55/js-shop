@@ -5,111 +5,70 @@ const defaultUser: User = {
   Password_hash: "1234asdf",
   Photo_url: "http://localhost:5173/favicon.svg",
 };
-const defaultProductCart: ProductCart = {
-  Id: 1,
-  Name: "undefined",
-  Description: "Lorem",
-  Image_url: "http://localhost:5173/favicon.svg",
-  Price: 101,
-};
-const defaultProduct: Product = {
-  Id: 1,
-  Name: "undefined",
-  Image_url: "http://localhost:5173/favicon.svg",
-  Price: 101,
-};
 
-interface product_interface {
+const favicon = "http://localhost:5173/favicon.svg"
+
+export interface IProduct {
   Id: number;
   Name: string;
   Image_url: string;
   Price: number;
 }
 
-class Product implements product_interface {
-  Id: number;
-  Name: string;
-  Image_url: string;
-  Price: number;
-
-  constructor(id: number, name: string, image_url: string, price: number) {
-    this.Id = id;
-    this.Name = name;
-    this.Image_url = image_url;
-    this.Price = price;
-  }
+export interface IProductCart extends IProduct {
+    Description: string;
 }
 
-class ProductCart extends Product {
-  Description: string;
-
-  constructor(
-    id: number,
-    name: string,
-    image_url: string,
-    price: number,
-    description: string,
-  ) {
-    super(id, name, image_url, price);
-    this.Description = description;
-  }
-}
-
-class ProductCartDefault extends ProductCart {
+export class Product implements IProduct {
   constructor() {
-    super(
-      defaultProductCart.Id,
-      defaultProductCart.Name,
-      defaultProductCart.Image_url,
-      defaultProductCart.Price,
-      defaultProductCart.Description,
-    );
+    this.Id = 1;
+    this.Name = "Undefined name";
+    this.Image_url = favicon;
+    this.Price = 9001;
   }
+    Id: number;
+    Name: string;
+    Image_url: string;
+    Price: number;
 }
 
-class ProductDefault extends Product {
-  constructor() {
-    super(
-      defaultProduct.Id,
-      defaultProduct.Name,
-      defaultProduct.Image_url,
-      defaultProduct.Price,
-    );
-  }
+export class ProductCart implements IProductCart  {
+    Description: string;
+    Id: number;
+    Name: string;
+    Image_url: string;
+    Price: number;
+
+    constructor() {
+        this.Id = 1;
+        this.Name = "Undefined name";
+        this.Image_url = favicon;
+        this.Price = 9001;
+        this.Description = "lorem";
+    }
 }
 
-export class User {
-  Id: number;
-  Name: string;
-  Email: string;
-  Password_hash: string;
-  Photo_url: string;
 
-  constructor(
-    id: number,
-    name: string,
-    email: string,
-    password_hash: string,
-    photo_url: string,
-  ) {
-    this.Id = id;
-    this.Name = name;
-    this.Email = email;
-    this.Password_hash = password_hash;
-    this.Photo_url = photo_url;
-  }
+export interface IUser {
+    Id: number;
+    Name: string;
+    Email: string;
+    Password_hash: string;
+    Photo_url: string;
 }
 
-export class UserDefault extends User {
-  constructor() {
-    super(
-      defaultUser.Id,
-      defaultUser.Name,
-      defaultUser.Email,
-      defaultUser.Password_hash,
-      defaultUser.Photo_url,
-    );
-  }
-}
+export class User implements IUser {
+    Id: number;
+    Name: string;
+    Email: string;
+    Password_hash: string;
+    Photo_url: string;
 
-export { Product, ProductDefault, ProductCart, ProductCartDefault };
+    constructor() {
+        this.Id = 1;
+        this.Name = "Undefined name";
+        this.Email = "undefined email";
+        this.Password_hash = "undefined password";
+        this.Photo_url = "undefined photo";
+    }
+}

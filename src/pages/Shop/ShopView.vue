@@ -4,11 +4,11 @@ import ShopContainer from "./ShopContainer.vue";
 
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import { Product } from "@/template";
+import { type IProduct } from "@/template";
 
 const route = useRoute();
 
-const post = ref<Product[]>([]);
+const post = ref<IProduct[]>([]);
 const error = ref(null);
 const loading = ref(false);
 

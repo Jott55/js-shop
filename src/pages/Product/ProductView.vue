@@ -5,26 +5,23 @@ import ShopContainer from "../Shop/ShopContainer.vue";
 import { getProduct } from "@/fetchdata";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import type { ProductCart } from "@/template";
+import type { IProductCart, ProductCart } from "@/template";
 
 const route = useRoute();
 
-const loading = ref(false);
-const post = ref<ProductCart>();
-const error = ref(null);
+const post = ref<IProductCart | null>(null);
 
 const getItem = async (id: string | string[] | undefined) => {
-  loading.value = true;
-  error.value = null;
 
-  try {
-    const res = await getProduct(Number(id));
-    if (res != null) {
-      post.value = res;
-    }
-    throw new Error("no response");
-  } catch (err: any) {
-    error.value = err;
+  if (typeof id === undefined) {
+    return
+  }
+
+  const res = await getProduct(Number(id))
+
+  if (res) {
+    post.value = res
+    return
   }
 };
 

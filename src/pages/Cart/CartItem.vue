@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import noImage from "@/assets/noImage.svg";
-import { Product, ProductDefault } from "@/template";
+import { Product, type IProduct } from "@/template";
+ "@/template";
 
-const { product = new ProductDefault() } = defineProps({
-  product: Product,
-});
+const { product = new Product() } = defineProps<{
+  product?: IProduct
+}>();
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const { product = new ProductDefault() } = defineProps({
 
 .image {
   width: 20rem;
-  height: 10rem;
+  height: 20rem;
   object-fit: cover;
 }
 
