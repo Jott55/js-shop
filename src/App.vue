@@ -27,8 +27,8 @@ const navlinks = [
 <style scoped>
 #app {
   overflow: auto;
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
   padding: 2rem;
 }
 </style>
