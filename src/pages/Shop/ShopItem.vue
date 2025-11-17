@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import defaultImg from '../../assets/noImage.svg'
-import { RouterLink } from 'vue-router'
-import { Product } from '@/template'
+import defaultImg from "../../assets/noImage.svg";
+import { RouterLink } from "vue-router";
+import { Product } from "@/template";
 
-const moneySign = '$'
+const moneySign = "$";
 
-const {
-  product = new Product(1, 'undefined', defaultImg, 3)
-} = defineProps({
-  product: Product
-})
+const { product = new Product(1, "undefined", defaultImg, 3) } = defineProps({
+  product: Product,
+});
 </script>
 <template>
   <RouterLink :to="'/product/' + product.Id">
     <div class="product-card">
-      <img :src="product.Image_url" alt="product image" class="product-image" loading="lazy" />
+      <img
+        :src="product.Image_url"
+        alt="product image"
+        class="product-image"
+        loading="lazy"
+      />
       <p class="product-name">{{ product.Name }}</p>
       <p class="product-price">{{ moneySign }}{{ product.Price }}</p>
 

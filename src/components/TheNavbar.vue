@@ -1,18 +1,18 @@
 <script setup lang="ts">
 interface LinkItem {
-  name: string
-  link: string
+  name: string;
+  link: string;
 }
 
 const {
-  title = 'title',
-  icon = '',
-  links = [{ name: 'Home Page', link: '/' }],
+  title = "title",
+  icon = "",
+  links = [{ name: "Home Page", link: "/" }],
 } = defineProps({
   title: String,
   icon: String,
   links: Array<LinkItem>,
-})
+});
 </script>
 
 <template>
@@ -20,8 +20,8 @@ const {
     <div class="navbar-content">
       <img :src="icon" alt="no icon available" class="navbar-img" />
       <h1>{{ title }}</h1>
-      <ul class="navlist">
-        <li v-for="(item, index) in links" :key="index">
+      <ul class="nav-list">
+        <li class="nav-item" v-for="(item, index) in links" :key="index">
           <RouterLink :to="item.link">
             <h3>{{ item.name }}</h3>
           </RouterLink>
@@ -51,11 +51,6 @@ const {
   padding-left: 1rem;
 }
 
-.navlist {
-  display: flex;
-  column-gap: 1rem;
-}
-
 .navbar-nav {
   display: flex;
   justify-content: space-between;
@@ -71,6 +66,18 @@ const {
   justify-content: start;
   align-items: center;
   column-gap: 1rem;
+}
+
+.nav-list {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.nav-item {
+  border-left: 0.3rem solid hsl(204, 20%, 61%);
+  padding-left: 1rem;
+  line-height: 10%;
+  border-radius: 4%;
 }
 
 #hamburger-icon {

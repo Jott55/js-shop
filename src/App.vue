@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import TheNavbar from './components/TheNavbar.vue'
-import shopIcon from './assets/bitmap.svg'
-import { RouterView } from 'vue-router'
+import TheNavbar from "./components/TheNavbar.vue";
+import shopIcon from "./assets/bitmap.svg";
+import { RouterView } from "vue-router";
 
 const navlinks = [
-  { name: "Home page", link: "/" },
-  { name: "Your cart", link: "/cart" },
-  { name: "Admin", link: '/admin'},
-  ]
+  { name: "Home", link: "/" },
+  { name: "Cart", link: "/cart" },
+  { name: "Admin", link: "/admin" },
+  { name: "Profile", link: "/profile" },
+];
 </script>
 
 <template>
-  <TheNavbar title="Js Shop" :icon="shopIcon" class="the-navbar" :links="navlinks" />
+  <TheNavbar
+    title="Js Shop"
+    :icon="shopIcon"
+    class="the-navbar"
+    :links="navlinks"
+  />
 
   <main id="app">
     <RouterView />
@@ -26,7 +32,6 @@ const navlinks = [
   padding: 2rem;
 }
 </style>
-
 
 <style>
 body {

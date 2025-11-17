@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import ShopItem from './ShopItem.vue'
-import { Product} from '@/template';
+import ShopItem from "./ShopItem.vue";
+import { Product } from "@/template";
 
-
-const {
-  shopItems
-} = defineProps({
-  shopItems: Array<Product>
-})
-
+const { shopItems } = defineProps({
+  shopItems: Array<Product>,
+});
 </script>
 
 <template>
