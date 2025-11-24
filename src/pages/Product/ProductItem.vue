@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import defaultImage from "@/assets/noImage.svg";
-import { ProductCart, type IProductCart } from "@/template";
+import { ProductDisplay, type IProductDisplay } from "@/template";
 
-const { product = new ProductCart() } = defineProps<{
-  product?: IProductCart
+const { product = new ProductDisplay() } = defineProps<{
+  product?: IProductDisplay
 }>();
 </script>
 <template>

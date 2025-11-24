@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { getData } from "@/fetchdata";
+import { getProductCart } from "@/fetchdata";
 import CartItem from "./CartItem.vue";
 import { useRoute } from "vue-router";
-import type { IProduct } from "@/template";
+import type { IProduct, IProductCart } from "@/template";
 import { ref, watch } from "vue";
 
-const products = ref<IProduct[]>()
+const products = ref<IProductCart[]>()
 
 const fetchdata = async () => {
-  const res = await getData()
+  const res = await getProductCart(1)
   console.log(res)
   if (res) {
     products.value = res

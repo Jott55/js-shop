@@ -8,6 +8,8 @@ const navlinks = [
   { name: "Cart", link: "/cart" },
   { name: "Admin", link: "/admin" },
   { name: "Profile", link: "/profile" },
+  { name: "Login", link: "/login" },
+  { name: "Register", link: "/register" },
 ];
 </script>
 
@@ -52,6 +54,11 @@ li {
 
 a {
   text-decoration: none;
+  color: black;
+}
+
+a:active {
+  color: hsl(159, 12%, 56%);
 }
 
 a:visited {

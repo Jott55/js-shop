@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { Product, type IProduct } from "@/template";
+import { ProductCart, type IProduct, type IProductCart } from "@/template";
  "@/template";
 
-const { product = new Product() } = defineProps<{
-  product?: IProduct
+const { product = new ProductCart() } = defineProps<{
+  product?: IProductCart
 }>();
 </script>
 
@@ -12,16 +12,22 @@ const { product = new Product() } = defineProps<{
     <img :src="product.Image_url" alt="no image available" class="image" />
     <h4 class="name">{{ product.Name }}</h4>
     <p class="price">${{ product.Price }}</p>
+    <p class="quantity">{{ product.Quantity }}</p>
   </div>
 </template>
 
 <style scoped>
 .item {
-  display: flex;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 4fr;
   align-items: center;
   border: thick solid hsl(40, 100%, 60%);
   margin: 1rem 0;
+}
+
+.quantity {
+  text-align: end;
+  margin-right: 5rem;
 }
 
 .image {

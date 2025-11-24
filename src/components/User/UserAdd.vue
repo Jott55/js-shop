@@ -6,10 +6,9 @@ import { insertUser } from "@/fetchdata";
 
 const user = ref<User>(new User());
 
-const insert = async () => { 
-    insertUser(user.value)
-}
-
+const insert = async () => {
+  insertUser(user.value);
+};
 </script>
 
 <template>
@@ -34,16 +33,16 @@ const insert = async () => {
       </div>
       <div class="box">
         <label for="user-password">password</label>
-        <input type="text" name="" v-model="user.Password_hash" id="user-password" />
+        <input type="text" name="" v-model="user.Password" id="user-password" />
       </div>
       <div class="box">
         <button type="button" @click="insert">Add user</button>
       </div>
     </div>
     <div class="board">
-        <div class="box">
-            <UserCard :user="user" />
-        </div>
+      <div class="box">
+        <UserCard :user="user" />
+      </div>
     </div>
   </div>
 </template>
@@ -55,13 +54,13 @@ const insert = async () => {
 }
 
 .board {
-    border: 1rem double black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-    align-items: start;
-    row-gap: 0.5rem;
+  border: 1rem double black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  align-items: start;
+  row-gap: 0.5rem;
 }
 
 .box {
@@ -75,6 +74,6 @@ const insert = async () => {
   padding: 1rem;
 }
 .box > input {
-    font-size: 1.4em;
+  font-size: 1.4em;
 }
 </style>

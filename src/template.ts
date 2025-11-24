@@ -2,7 +2,7 @@ const defaultUser: User = {
   Id: 1,
   Name: "undefined",
   Email: "undefined@example.com",
-  Password_hash: "1234asdf",
+  Password: "1234asdf",
   Photo_url: "http://localhost:5173/favicon.svg",
 };
 
@@ -15,8 +15,28 @@ export interface IProduct {
   Price: number;
 }
 
+export interface IProductDisplay extends IProduct {
+  Description: string;
+}
+
 export interface IProductCart extends IProduct {
-    Description: string;
+  Quantity: number
+}
+
+export class ProductCart implements IProductCart {
+  Quantity: number;
+  Id: number;
+  Name: string;
+  Image_url: string;
+  Price: number;
+  
+  constructor() {
+    this.Id = 1
+    this.Name = "undefined name"
+    this.Image_url = favicon
+    this.Price = 101
+    this.Quantity = 2
+  }
 }
 
 export class Product implements IProduct {
@@ -32,7 +52,7 @@ export class Product implements IProduct {
     Price: number;
 }
 
-export class ProductCart implements IProductCart  {
+export class ProductDisplay implements IProductDisplay  {
     Description: string;
     Id: number;
     Name: string;
@@ -53,7 +73,7 @@ export interface IUser {
     Id: number;
     Name: string;
     Email: string;
-    Password_hash: string;
+    Password: string;
     Photo_url: string;
 }
 
@@ -61,14 +81,30 @@ export class User implements IUser {
     Id: number;
     Name: string;
     Email: string;
-    Password_hash: string;
+    Password: string;
     Photo_url: string;
 
     constructor() {
         this.Id = 1;
         this.Name = "Undefined name";
         this.Email = "undefined email";
-        this.Password_hash = "undefined password";
-        this.Photo_url = "undefined photo";
+        this.Password = "undefined password";
+        this.Photo_url = favicon;
     }
+}
+
+export interface ILoginUser {
+  Email: string;
+  Password: string
+}
+
+export class LoginUser implements ILoginUser {
+  Email: string;
+  Password: string;
+
+  constructor() {
+    this.Email = ""
+    this.Password = ""
+  }
+  
 }

@@ -2,7 +2,7 @@
 import { User, type IUser } from "@/template";
 
 const { user = new User() } = defineProps<{
-    user: IUser
+  user?: IUser;
 }>();
 </script>
 
@@ -31,7 +31,6 @@ const { user = new User() } = defineProps<{
   font-weight: 500;
   font-size: 2em;
 }
-
 
 .photo {
   height: 10rem;

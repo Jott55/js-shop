@@ -2,11 +2,11 @@
 import { ref } from "vue";
 import ShopItem from "../Shop/ShopItem.vue";
 
-import { postProduct} from "@/fetchdata";
+import { postProduct } from "@/fetchdata";
 import { deleteProduct } from "@/fetchdata";
-import { ProductCart } from "@/template";
+import { ProductDisplay } from "@/template";
 
-const product = ref(new ProductCart());
+const product = ref(new ProductDisplay());
 const items_length = ref(1);
 
 product.value.Id = items_length.value;

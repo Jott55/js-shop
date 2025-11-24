@@ -5,11 +5,11 @@ import ShopContainer from "../Shop/ShopContainer.vue";
 import { getProduct } from "@/fetchdata";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import type { IProductCart, ProductCart } from "@/template";
+import type { IProductDisplay, ProductDisplay } from "@/template";
 
 const route = useRoute();
 
-const post = ref<IProductCart | null>(null);
+const post = ref<IProductDisplay | null>(null);
 
 const getItem = async (id: string | string[] | undefined) => {
 
