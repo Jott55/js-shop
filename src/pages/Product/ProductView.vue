@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ProductItem from "./ProductItem.vue";
+import ProductItem from "../../components/Products/ProductItem.vue";
 import ShopContainer from "../Shop/ShopContainer.vue";
 
-import { getProduct } from "@/fetchdata";
+import { addItem, getProduct } from "@/fetchdata";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import type { IProductDisplay, ProductDisplay } from "@/template";
@@ -12,16 +12,15 @@ const route = useRoute();
 const post = ref<IProductDisplay | null>(null);
 
 const getItem = async (id: string | string[] | undefined) => {
-
   if (typeof id === undefined) {
-    return
+    return;
   }
 
-  const res = await getProduct(Number(id))
+  const res = await getProduct(Number(id));
 
   if (res) {
-    post.value = res
-    return
+    post.value = res;
+    return;
   }
 };
 
@@ -30,12 +29,19 @@ watch(
   () => getItem(route.params.id),
   { immediate: true },
 );
+
+const addToCart = () => {
+  const id = post.value?.Id;
+  if (id) {
+    addItem(id);
+  }
+};
 </script>
 
 <template>
   <div class="page" v-if="post">
-    <ProductItem :product="post" />
-    <ShopContainer></ShopContainer>
+    <ProductItem :product="post" :button_callback="addToCart" />
+    <ShopContainer />
   </div>
 </template>
 

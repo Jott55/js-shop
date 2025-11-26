@@ -34,7 +34,7 @@ const {
     </div>
     <div class="box">
       <label class="input-label" for="photo">Photo url</label>
-      <input class="input-el" type="text" />
+      <input class="input-el" type="text" v-model="user.Photo_url" />
     </div>
     <div class="box">
       <button class="callback-button" @click="callback">{{ button }}</button>

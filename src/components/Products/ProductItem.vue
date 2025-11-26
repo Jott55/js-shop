@@ -2,8 +2,12 @@
 import defaultImage from "@/assets/noImage.svg";
 import { ProductDisplay, type IProductDisplay } from "@/template";
 
-const { product = new ProductDisplay() } = defineProps<{
-  product?: IProductDisplay
+const {
+  product = new ProductDisplay(),
+  button_callback = () => alert("Not implemented"),
+} = defineProps<{
+  product?: IProductDisplay;
+  button_callback?: (payload: PointerEvent) => void;
 }>();
 </script>
 <template>
@@ -19,7 +23,9 @@ const { product = new ProductDisplay() } = defineProps<{
         {{ product.Description }}
       </p>
       <div class="product-payment">
-        <button class="product-button">Add it to cart</button>
+        <button class="product-button" @click="button_callback">
+          Add it to cart
+        </button>
         <p class="product-price">${{ product.Price }}</p>
       </div>
     </div>

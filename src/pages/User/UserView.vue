@@ -10,7 +10,7 @@ const userRef = ref<User>();
 const route = useRoute();
 
 const fetchData = async () => {
-  let res = await getUser(2);
+  let res = await getUser();
   if (res != null) {
     userRef.value = res;
   } else {
