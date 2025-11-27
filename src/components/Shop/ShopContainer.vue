@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ShopItem from "./ShopItem.vue";
+import ShopItem from "@/components/Shop/ShopItem.vue";
 import { type IProduct } from "@/template";
 
 const { shopItems } = defineProps<{
-  shopItems?: IProduct[]
+  shopItems?: IProduct[];
 }>();
 </script>
 

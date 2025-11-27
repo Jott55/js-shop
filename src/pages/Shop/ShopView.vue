@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getData } from "@/fetchdata";
-import ShopContainer from "./ShopContainer.vue";
+import ShopContainer from "@/components/Shop/ShopContainer.vue";
 
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";

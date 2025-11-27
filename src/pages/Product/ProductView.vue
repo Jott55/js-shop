@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProductItem from "../../components/Products/ProductItem.vue";
-import ShopContainer from "../Shop/ShopContainer.vue";
+import ShopContainer from "@/components/Shop/ShopContainer.vue";
 
 import { addItem, getProduct } from "@/fetchdata";
 import { ref, watch } from "vue";

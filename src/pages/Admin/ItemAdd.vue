@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import ShopItem from "../Shop/ShopItem.vue";
+import ShopItem from "@/components/Shop/ShopItem.vue";
 
 import { postProduct } from "@/fetchdata";
 import { deleteProduct } from "@/fetchdata";

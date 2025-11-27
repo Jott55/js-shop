@@ -5,7 +5,7 @@ import { Product, type IProduct } from "@/template";
 const moneySign = "$";
 
 const { product = new Product() } = defineProps<{
-  product?: IProduct
+  product?: IProduct;
 }>();
 </script>
 <template>
@@ -33,9 +33,7 @@ const { product = new Product() } = defineProps<{
   text-align: center;
   width: 20rem;
   height: 30rem;
-  border-color: hsl(0, 0%, 56%);
-  border-style: solid;
-  border-width: 1px;
+  /* border: 1px hsl(0, 0%, 56%); */
   font-family: sans-serif;
   padding-top: 0.4rem;
 }
