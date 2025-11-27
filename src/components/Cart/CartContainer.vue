@@ -15,28 +15,26 @@ const {
 </script>
 <template>
   <ul class="cart-container">
-    <li v-for="value in products" :key="'product-' + value.Id">
+    <li v-for="product in products" :key="'product-' + product.Id">
       <CartItem
-        :product="value"
+        :product="product"
         :add-button="
           () => {
-            value.Quantity += 1;
-            // TODO:
-            // change product quantity on server
-            changeProduct(value);
+            product.Quantity += 1;
+            changeProduct(product);
           }
         "
         :sub-button="
           () => {
-            if (value.Quantity > 0) {
-              value.Quantity -= 1;
-            } else if (value.Quantity <= 0) {
+            if (product.Quantity > 1) {
+              product.Quantity -= 1;
+            } else if (product.Quantity <= 1) {
               products.splice(
-                products.findIndex((value) => value.Id),
+                products.findIndex((value) => product.Id === value.Id),
                 1,
               );
             }
-            changeProduct(value);
+            changeProduct(product);
           }
         "
       />
