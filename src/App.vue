@@ -1,16 +1,44 @@
 <script setup lang="ts">
 import TheNavbar from "./components/TheNavbar.vue";
 import shopIcon from "./assets/bitmap.svg";
-import { RouterView } from "vue-router";
+import { RouterView, useRoute } from "vue-router";
+import { watch } from "vue";
+import { checkAuthToken } from "./fetchdata";
 
 const navlinks = [
   { name: "Home", link: "/" },
   { name: "Cart", link: "/cart" },
-  { name: "Admin", link: "/admin" },
-  { name: "Profile", link: "/profile" },
   { name: "Login", link: "/login" },
   { name: "Register", link: "/register" },
 ];
+
+const route = useRoute();
+
+const removeLink = () => {
+  navlinks.splice(
+    navlinks.findIndex((value) => value.name === "Login"),
+    1,
+  );
+  navlinks.splice(
+    navlinks.findIndex((value) => value.name === "Register"),
+    1,
+  );
+};
+const addLink = () => {
+  navlinks.push({ name: "Admin", link: "/admin" });
+  navlinks.push({ name: "Profile", link: "/profile" });
+};
+
+watch(
+  () => route.params.id,
+  () => {
+    if (checkAuthToken()) {
+      removeLink();
+      addLink();
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>

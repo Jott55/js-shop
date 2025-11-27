@@ -13,6 +13,10 @@ function generateToken() {
   return `jwtToken: ${getAuthCookie()}`
 }
 
+export function checkAuthToken(): boolean {
+  return getAuthCookie() ? true : false
+}
+
 export async function getData(): Promise<IProduct[] | null> {
     const res = await axios.get<Array<IProduct>>(baseUrl + "/product");
     if (res.data) {
@@ -93,4 +97,33 @@ export async function addItem(product_id: number) {
     headers: {"Authorization": generateToken()}
   })
   console.log(res)
+}
+
+let changedProducts: IProductCart[] = []
+const timeout = 1000
+let time: number = 0
+
+export async function sendChangedProducts() {
+  if (changedProducts.length < 1) {
+    console.log("no changes")
+    return
+  }
+  console.log("changes saved")
+  changedProducts.length = 0
+}
+
+export async function changeProduct(product: IProductCart) {
+  const i = changedProducts.findIndex(value => value.Id === product.Id) 
+  if (i >= 0 ) {
+    changedProducts[i]!.Quantity = product.Quantity
+  } 
+  else {
+    changedProducts.push(product)
+  }
+  if (time != 0) {
+    clearTimeout(time)
+    time = 0
+  }
+  time = setTimeout(sendChangedProducts, timeout)
+  
 }

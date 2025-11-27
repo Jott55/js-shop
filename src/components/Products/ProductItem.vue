@@ -83,6 +83,11 @@ const {
   text-shadow: 1px 1px 2px black;
 }
 
+.product-button:active {
+  transform: scale(99%);
+  background-color: hsl(120, 77%, 40%);
+}
+
 .product-price {
   font-family: "Courier New", Courier, monospace;
   font-size: 2em;

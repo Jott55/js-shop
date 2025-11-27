@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { checkAuthToken } from "@/fetchdata";
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+
 interface LinkItem {
   name: string;
   link: string;
@@ -8,11 +12,11 @@ const {
   title = "title",
   icon = "",
   links = [{ name: "Home Page", link: "/" }],
-} = defineProps({
-  title: String,
-  icon: String,
-  links: Array<LinkItem>,
-});
+} = defineProps<{
+  title?: string;
+  icon?: string;
+  links?: Array<LinkItem>;
+}>();
 </script>
 
 <template>
