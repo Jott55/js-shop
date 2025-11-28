@@ -86,9 +86,9 @@ export class User implements IUser {
 
     constructor() {
         this.Id = 1;
-        this.Name = "Undefined name";
-        this.Email = "undefined email";
-        this.Password = "undefined password";
+        this.Name = "";
+        this.Email = "";
+        this.Password = "";
         this.Photo_url = favicon;
     }
 }

@@ -11,7 +11,7 @@ import CartPayment from "../../components/Cart/CartPayment.vue";
 import { type IProductCart } from "@/template";
 import ShopView from "../Shop/ShopView.vue";
 
-const products = ref<IProductCart[]>();
+const products = ref<IProductCart[]>([]);
 
 const fetchdata = async () => {
   const res = await getProductCart(1);
@@ -41,4 +41,5 @@ watch(
 <template>
   <CartContainer :products="products" :change-product="whenChange" />
   <CartPayment :purchase-button="whenPurchase" />
+  <ShopView />
 </template>

@@ -2,15 +2,18 @@
 import { LoginUser, User, type ILoginUser, type IUser } from "@/template";
 import { ref } from "vue";
 
-const {
-  user = new LoginUser(),
-  callback = () => alert("not implemented"),
-  button = "Submit",
-} = defineProps<{
-  user?: ILoginUser;
-  callback?: (payload: PointerEvent) => void;
-  button?: string;
-}>();
+const user = ref(new LoginUser());
+
+const { callback = () => alert("not implemented"), button = "Submit" } =
+  defineProps<{
+    user?: ILoginUser;
+    callback?: (user: ILoginUser) => void;
+    button?: string;
+  }>();
+
+const loggin = () => {
+  callback(user.value);
+};
 </script>
 
 <template>
@@ -29,7 +32,7 @@ const {
       />
     </div>
     <div class="box">
-      <button class="callback-button" @click="callback">{{ button }}</button>
+      <button class="callback-button" @click="loggin">{{ button }}</button>
     </div>
   </div>
 </template>

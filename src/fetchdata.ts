@@ -1,5 +1,5 @@
 import axios, { AxiosHeaders, type AxiosHeaderValue, type RawAxiosRequestHeaders } from "axios";
-import { Product, type IProduct, type IProductCart, type IProductDisplay, type IUser } from "./template";
+import { Product, type IProduct, type IProductCart, type IProductDisplay, type IUser, type ILoginUser} from "./template";
 
 const baseUrl = "http://localhost:8069";
 
@@ -126,4 +126,12 @@ export async function changeProduct(product: IProductCart) {
   }
   time = setTimeout(sendChangedProducts, timeout)
   
+}
+
+export async function postLoginUser(user: ILoginUser) {
+  let res = await axios.post(baseUrl + "/login/user", {
+    LoginUser: user
+  })
+  
+  return res.data
 }
