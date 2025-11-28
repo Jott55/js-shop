@@ -32,7 +32,7 @@ async function fetchData() {
 <template>
   <div v-if="loading">Loading content: wait a moment</div>
   <div v-if="error">
-    {{ error }}
+    <p>Sorry no items available, try again later</p>
   </div>
   <div v-if="post">
     <ShopContainer class="shop-container" :shop-items="post" />

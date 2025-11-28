@@ -5,9 +5,13 @@ import { postLoginUser } from "@/fetchdata";
 import { type ILoginUser } from "@/template";
 
 const sendUser = async (user: ILoginUser) => {
-  let token = await postLoginUser(user);
-  if (token) {
-    createAuthCookie(token);
+  try {
+    let token = await postLoginUser(user);
+    if (token) {
+      createAuthCookie(token);
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 </script>

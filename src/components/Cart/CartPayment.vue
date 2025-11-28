@@ -24,6 +24,7 @@ const { purchaseButton = () => alert("not implemented") } = defineProps<{
   background-color: hsl(19, 79%, 62%);
   color: hsla(0, 0%, 100%, 0.954);
   border: 0;
+  border-radius: 0.8rem;
 }
 .purchase-button:active {
   background-color: hsl(19, 79%, 40%);

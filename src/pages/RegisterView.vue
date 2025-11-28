@@ -8,9 +8,13 @@ import { ref } from "vue";
 const us = ref<IUser>(new User());
 
 const saveUser = async () => {
-  let access_token = await registerUser(us.value);
-  if (access_token) {
-    createAuthCookie(access_token);
+  try {
+    let access_token = await registerUser(us.value);
+    if (access_token) {
+      createAuthCookie(access_token);
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 </script>

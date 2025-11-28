@@ -2,7 +2,12 @@
 import { getProductCart } from "@/fetchdata";
 import CartItem from "./CartItem.vue";
 import { useRoute } from "vue-router";
-import { ProductCart, type IProduct, type IProductCart } from "@/template";
+import {
+  ProductCart,
+  type IProduct,
+  type IProductCart,
+  type IProductQuantity,
+} from "@/template";
 import { ref, watch } from "vue";
 
 const {
@@ -10,7 +15,7 @@ const {
   changeProduct = () => alert("not implemented"),
 } = defineProps<{
   products?: IProductCart[];
-  changeProduct?: (p: IProductCart) => void;
+  changeProduct?: (p: IProductQuantity) => void;
 }>();
 </script>
 <template>
@@ -34,7 +39,7 @@ const {
                 1,
               );
             }
-            changeProduct(product);
+            changeProduct({ Id: product.Id, Quantity: product.Quantity });
           }
         "
       />

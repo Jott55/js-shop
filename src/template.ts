@@ -6,6 +6,9 @@ const defaultUser: User = {
   Photo_url: "http://localhost:5173/favicon.svg",
 };
 
+// TODO: change to IProduct only have ID
+// and change all implementations
+
 const favicon = "http://localhost:5173/favicon.svg"
 
 export interface IProduct {
@@ -52,6 +55,28 @@ export class Product implements IProduct {
     Price: number;
 }
 
+export interface IProductAdd{ 
+  Name: string
+  Image_url: string;
+  Price: number
+  Description: string
+}
+
+export class ProductAdd implements IProductAdd {
+  Name: string;
+  Image_url: string;
+  Price: number;
+  Description: string;
+
+  constructor() {
+    this.Name = ""
+    this.Image_url = ""
+    this.Price = 0
+    this.Description = ""
+  }
+
+}
+
 export class ProductDisplay implements IProductDisplay  {
     Description: string;
     Id: number;
@@ -66,6 +91,11 @@ export class ProductDisplay implements IProductDisplay  {
         this.Price = 9001;
         this.Description = "lorem";
     }
+}
+
+export interface IProductQuantity {
+  Id: number
+  Quantity: number
 }
 
 

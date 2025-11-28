@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductItem from "../../components/Products/ProductItem.vue";
+import ProductItem from "@/components/Products/ProductItem.vue";
 import ShopContainer from "@/components/Shop/ShopContainer.vue";
 
 import { addItem, getProduct } from "@/fetchdata";
@@ -16,11 +16,15 @@ const getItem = async (id: string | string[] | undefined) => {
     return;
   }
 
-  const res = await getProduct(Number(id));
+  try {
+    const res = await getProduct(Number(id));
 
-  if (res) {
-    post.value = res;
-    return;
+    if (res) {
+      post.value = res;
+      return;
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 

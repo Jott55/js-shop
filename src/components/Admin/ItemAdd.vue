@@ -4,19 +4,13 @@ import ShopItem from "@/components/Shop/ShopItem.vue";
 
 import { postProduct } from "@/fetchdata";
 import { deleteProduct } from "@/fetchdata";
-import { ProductDisplay } from "@/template";
+import { ProductAdd } from "@/template";
+import { NodeBuilderFlags } from "typescript";
 
-const product = ref(new ProductDisplay());
-const items_length = ref(1);
+const product = ref(new ProductAdd());
 
-product.value.Id = items_length.value;
-
-const saveToJson = () => {
+const saveTodb = () => {
   postProduct(product.value);
-};
-
-const deleteProductById = () => {
-  deleteProduct(product.value.Id);
 };
 </script>
 
@@ -25,11 +19,7 @@ const deleteProductById = () => {
   <div class="container">
     <div class="form">
       <div class="property">
-        <label for="item-id">Id</label>
-        <input type="number" id="item-id" v-model="product.Id" min="-1" />
-      </div>
-      <div class="property">
-        <label for="item-name">Item name</label>
+        <label for="item-name">Name</label>
         <input id="item-name" v-model="product.Name" />
       </div>
       <div class="property">
@@ -48,14 +38,11 @@ const deleteProductById = () => {
         ></textarea>
       </div>
 
-      <button @click="saveToJson">Add item</button>
-      <button @click="deleteProductById">
-        delete product of id: {{ product.Id }}
-      </button>
+      <button @click="saveTodb">Add item</button>
     </div>
 
     <div>
-      <ShopItem :product="product" />
+      <ShopItem :product="{ ...product, Id: 1 }" />
     </div>
   </div>
 </template>

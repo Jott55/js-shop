@@ -1,5 +1,5 @@
 import axios, { AxiosHeaders, type AxiosHeaderValue, type RawAxiosRequestHeaders } from "axios";
-import { Product, type IProduct, type IProductCart, type IProductDisplay, type IUser, type ILoginUser} from "./template";
+import { Product, type IProduct, type IProductCart, type IProductDisplay, type IUser, type ILoginUser, type IProductAdd, type IProductQuantity} from "./template";
 
 const baseUrl = "http://localhost:8069";
 
@@ -36,7 +36,7 @@ export async function getProduct(id: number): Promise<IProductDisplay | null> {
     return null
 }
 
-export async function getProductCart(user_id: number): Promise<IProductCart[] | null> {
+export async function getProductCart(): Promise<IProductCart[] | null> {
   const cookie_token = getAuthCookie()
   const res = await axios.get<IProductCart[]>(baseUrl + "/user/cart", 
     {
@@ -49,7 +49,7 @@ export async function getProductCart(user_id: number): Promise<IProductCart[] | 
   return null
 }
 
-export async function postProduct(product: IProductDisplay) {
+export async function postProduct(product: IProductAdd) {
   let res = await axios.post(baseUrl + "/product/insert", {
     Product: product,
   });
@@ -99,26 +99,37 @@ export async function addItem(product_id: number) {
   console.log(res)
 }
 
-let changedProducts: IProductCart[] = []
-const timeout = 1000
+let modifiedProductsList: IProductQuantity[] = []
 let time: number = 0
 
 export async function sendChangedProducts() {
-  if (changedProducts.length < 1) {
+  if (modifiedProductsList.length < 1) {
     console.log("no changes")
     return
   }
-  console.log("changes saved")
-  changedProducts.length = 0
+
+  try {
+    let res = axios.post(baseUrl + "/user/cart/update", {
+      Modified: modifiedProductsList
+    }, {
+      headers: {"Authorization": generateToken()}
+    } )
+    
+    console.log("changes saved", modifiedProductsList)
+  } catch(e) {
+    console.error(e)
+  } finally {
+    modifiedProductsList.length = 0
+  }
 }
 
-export async function changeProduct(product: IProductCart) {
-  const i = changedProducts.findIndex(value => value.Id === product.Id) 
+export async function changeProduct(product: IProductQuantity, timeout: number) {
+  const i = modifiedProductsList.findIndex(value => value.Id === product.Id) 
   if (i >= 0 ) {
-    changedProducts[i]!.Quantity = product.Quantity
+    modifiedProductsList[i]!.Quantity = product.Quantity
   } 
   else {
-    changedProducts.push(product)
+    modifiedProductsList.push(product)
   }
   if (time != 0) {
     clearTimeout(time)
