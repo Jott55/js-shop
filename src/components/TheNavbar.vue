@@ -2,7 +2,6 @@
 import { checkAuthToken } from "@/fetchdata";
 import { watch } from "vue";
 import { useRoute } from "vue-router";
-
 interface LinkItem {
   name: string;
   link: string;
@@ -10,11 +9,13 @@ interface LinkItem {
 
 const {
   title = "title",
-  icon = "",
+  icon = " ",
+  changeTheme = () => alert("not implemented"),
   links = [{ name: "Home Page", link: "/" }],
 } = defineProps<{
   title?: string;
   icon?: string;
+  changeTheme?: (payload: PointerEvent) => void;
   links?: Array<LinkItem>;
 }>();
 </script>
@@ -23,15 +24,20 @@ const {
   <nav class="navbar-nav">
     <div class="navbar-content">
       <img :src="icon" alt="no icon available" class="navbar-img" />
-      <h1>{{ title }}</h1>
+      <h1 class="nav-title">{{ title }}</h1>
       <ul class="nav-list">
-        <li class="nav-item" v-for="(item, index) in links" :key="index">
-          <RouterLink :to="item.link">
+        <li v-for="(item, index) in links" :key="index">
+          <RouterLink :to="item.link" class="nav-item">
             <h3>{{ item.name }}</h3>
           </RouterLink>
         </li>
+        <button class="nav-item nav-button" @click="changeTheme">
+          <span class="material-symbols-outlined">palette</span>
+          <p>Change Theme</p>
+        </button>
       </ul>
     </div>
+
     <li>
       <div id="hamburger-icon">
         <span class="hamburger-bar hamburger-bar-1"></span>
@@ -55,14 +61,19 @@ const {
   padding-left: 1rem;
 }
 
+.nav-title {
+  width: 8rem;
+  white-space: nowrap;
+}
+
 .navbar-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: aliceblue;
+  background-color: var(--secondary);
   font-family: Arial, Helvetica, sans-serif;
-  border-radius: 3%;
   column-gap: 1rem;
+  overflow: scroll;
 }
 
 .navbar-content {
@@ -77,11 +88,24 @@ const {
   column-gap: 1rem;
 }
 
+.nav-button {
+  background-color: inherit;
+  border: 0;
+  color: inherit;
+}
+
 .nav-item {
-  border-left: 0.3rem solid hsl(204, 20%, 61%);
-  padding-left: 1rem;
-  line-height: 10%;
-  border-radius: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--terciary-border);
+  padding: 0.3rem 1rem;
+  /* line-height: 10%; */
+  border-radius: 40px;
+  min-width: 8rem;
+  column-gap: 0.4rem;
+  color: var(--on-terciary);
+  background-color: var(--terciary);
 }
 
 #hamburger-icon {

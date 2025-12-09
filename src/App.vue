@@ -1,99 +1,90 @@
 <script setup lang="ts">
-import TheNavbar from "./components/TheNavbar.vue";
-import shopIcon from "./assets/bitmap.svg";
+import TheNavbar from "@/components/TheNavbar.vue";
+import shopIcon from "@/assets/bitmap.svg";
 import { RouterView, useRoute } from "vue-router";
-import { watch } from "vue";
+import { watch, ref } from "vue";
 import { checkAuthToken } from "./fetchdata";
 
-const navlinks = [
+const shopIconString = shopIcon;
+
+const siteThemes = { currentIndex: 0, themes: ["light", "dark"] };
+
+const OP_LINKS = [
+  { name: "Admin", link: "/admin" },
+  { name: "Profile", link: "/profile" },
+];
+
+const STD_LINKS = [
   { name: "Home", link: "/" },
   { name: "Cart", link: "/cart" },
-  { name: "Login", link: "/login" },
-  { name: "Register", link: "/register" },
 ];
+
+const ANON_LINKS = [
+  { name: "Login", link: "/login" },
+  { name: "Sign in", link: "/signin" },
+];
+
+const navlinks = ref(STD_LINKS);
 
 const route = useRoute();
 
-const removeLink = () => {
-  navlinks.splice(
-    navlinks.findIndex((value) => value.name === "Login"),
-    1,
-  );
-  navlinks.splice(
-    navlinks.findIndex((value) => value.name === "Register"),
-    1,
-  );
+const updateNavItems = () => {
+  if (checkAuthToken()) {
+    navlinks.value = [...STD_LINKS, ...OP_LINKS];
+  } else {
+    navlinks.value = [...STD_LINKS, ...ANON_LINKS];
+  }
 };
-const addLink = () => {
-  navlinks.push({ name: "Admin", link: "/admin" });
-  navlinks.push({ name: "Profile", link: "/profile" });
+
+const updateTheme = () => {
+  document.documentElement.dataset["theme"] =
+    siteThemes.themes[siteThemes.currentIndex];
+
+  if (siteThemes.currentIndex < siteThemes.themes.length - 1) {
+    siteThemes.currentIndex++;
+    return;
+  }
+  siteThemes.currentIndex = 0;
 };
+
+updateTheme();
 
 watch(
   () => route.params.id,
   () => {
-    if (checkAuthToken()) {
-      removeLink();
-      addLink();
-    }
+    updateNavItems();
   },
   { immediate: true },
 );
 </script>
 
 <template>
-  <TheNavbar
-    title="Js Shop"
-    :icon="shopIcon"
-    class="the-navbar"
-    :links="navlinks"
-  />
-
   <main id="app">
-    <RouterView />
+    <TheNavbar
+      title="Js Shop"
+      class="the-navbar"
+      :icon="shopIconString"
+      :links="navlinks"
+      :change-theme="updateTheme"
+    />
+    <div class="content">
+      <RouterView />
+    </div>
   </main>
 </template>
 
 <style scoped>
 #app {
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  color: var(--on-primary);
+  background-color: var(--primary);
+}
+.content {
   overflow: auto;
   /* max-width: 1280px; */
   /* margin: 0 auto; */
   padding: 2rem;
-}
-</style>
-
-<style>
-body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:active {
-  color: hsl(159, 12%, 56%);
-}
-
-a:visited {
-  color: inherit;
-}
-
-* {
-  box-sizing: border-box;
 }
 </style>

@@ -13,6 +13,7 @@ import { type IProductCart, type IProductQuantity } from "@/template";
 import ShopView from "@/pages/ShopView.vue";
 
 const products = ref<IProductCart[]>([]);
+const loading = ref(true);
 const error = ref(false);
 const updateTimeout = 5 * 1000; // ms
 
@@ -21,7 +22,10 @@ const fetchdata = async () => {
     const res = await getProductCart();
     if (res) {
       products.value = res;
+    } else {
+      error.value = true;
     }
+    loading.value = false;
   } catch (e) {
     error.value = true;
     console.error("not possible fetch data", e);
@@ -47,7 +51,8 @@ watch(
 </script>
 
 <template>
-  <CartContainer :products="products" :change-product="whenChange" />
-  <CartPayment v-if="!error" :purchase-button="whenPurchase" />
-  <ShopView />
+  <div v-if="!error && !loading">
+    <CartContainer :products="products" :change-product="whenChange" />
+    <CartPayment :purchase-button="whenPurchase" />
+  </div>
 </template>

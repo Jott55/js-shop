@@ -14,6 +14,7 @@ function generateToken() {
 }
 
 export function checkAuthToken(): boolean {
+  // TODO: Check if it works by requesting a auth tester in server
   return getAuthCookie() ? true : false
 }
 

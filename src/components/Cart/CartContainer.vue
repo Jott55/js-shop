@@ -31,13 +31,15 @@ const {
         "
         :sub-button="
           () => {
-            if (product.Quantity > 1) {
-              product.Quantity -= 1;
-            } else if (product.Quantity <= 1) {
+            if (product.Quantity == 1) {
               products.splice(
                 products.findIndex((value) => product.Id === value.Id),
                 1,
               );
+            }
+            product.Quantity -= 1;
+            if (product.Quantity < 0) {
+              product.Quantity = 0;
             }
             changeProduct({ Id: product.Id, Quantity: product.Quantity });
           }

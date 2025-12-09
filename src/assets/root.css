@@ -1,0 +1,53 @@
+:root[data-theme=light] {
+    --primary: hsl(0, 0%, 100%);
+    --on-primary: hsl(0, 0%, 0%);
+    --secondary:   hsl(0, 0%, 95%);
+    --on-secondary: hsl(0, 0%, 5%);
+    --terciary: hsl(0, 0%, 85%);
+    --on-terciary: hsl(0, 0%, 15%);
+    --terciary-border: hsl(0, 0%, 90%);
+}
+
+:root[data-theme=dark] {
+    --primary: hsl(0, 0%, 0%);
+    --on-primary: hsl(0, 0%, 100%);
+    --secondary: hsl(0, 0%, 5%);
+    --on-secondary: hsl(0, 0%, 95%);
+    --terciary: hsl(0, 0%, 15%);
+    --on-terciary: hsl(0, 0%, 85%);
+    --terciary-border: hsl(0, 0%, 10%);
+
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:active {
+  color: hsl(159, 12%, 56%);
+}
+
+a:visited {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}

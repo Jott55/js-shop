@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ProductCart, type IProduct, type IProductCart } from "@/template";
-import { ref, watch } from "vue";
+import { onUnmounted, ref, watch } from "vue";
 ("@/template");
 
 const isMouseDown = ref(false);
@@ -48,6 +48,11 @@ watch(isMouseDown, () => {
     timeButtonDown.value = 0;
     timeInterval = 500;
   }
+});
+
+onUnmounted(() => {
+  clearInterval(interval);
+  console.log("Bye interval", product.Name);
 });
 
 watch(timeButtonDown, () => {
@@ -99,18 +104,18 @@ watch(timeButtonDown, () => {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr;
   align-items: center;
+  overflow: scroll;
   column-gap: 2rem;
   border: thick solid hsl(40, 90%, 70%);
-  margin: 1rem 0;
+  margin: 1rem 1rem;
   background-color: hsl(48, 90%, 70%);
   text-shadow: 1px 1px 2px hsl(0, 10%, 89%);
 }
 
 .quantity-text {
-  font-size: 4em;
+  font-size: 2.5em;
   text-align: center;
   /* border: 1px solid black; */
-  width: 2em;
 }
 .quantity-box {
   display: grid;
@@ -123,7 +128,7 @@ watch(timeButtonDown, () => {
 }
 
 .quantity-button {
-  font-size: 3.5em;
+  font-size: 2.5em;
   background: none;
   padding: 0;
   border: 0;
