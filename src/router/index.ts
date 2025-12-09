@@ -3,6 +3,7 @@ import ItemView from "@/pages/AdminView.vue";
 import CartView from "@/pages/CartView.vue";
 import LoginView from "@/pages/LoginView.vue";
 import ProductView from "@/pages/ProductView.vue";
+import PurchaseView from "@/pages/PurchaseView.vue";
 import RegisterView from "@/pages/RegisterView.vue";
 import ShopView from "@/pages/ShopView.vue";
 import UserView from "@/pages/UserView.vue";
@@ -17,7 +18,8 @@ const router = createRouter({
     { path: "/admin", component: AdminView },
     { path: "/profile", component: UserView },
     { path: "/login", component: LoginView},
-    { path: "/signin", component: RegisterView}
+    { path: "/signin", component: RegisterView},
+    { path: "/purchase", component: PurchaseView}
   ],
 });
 

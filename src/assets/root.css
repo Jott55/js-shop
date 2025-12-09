@@ -1,21 +1,27 @@
 :root[data-theme=light] {
     --primary: hsl(0, 0%, 100%);
     --on-primary: hsl(0, 0%, 0%);
+    --on-primary-shadow: hsl(0, 0%, 22%);
     --secondary:   hsl(0, 0%, 95%);
     --on-secondary: hsl(0, 0%, 5%);
     --terciary: hsl(0, 0%, 85%);
     --on-terciary: hsl(0, 0%, 15%);
     --terciary-border: hsl(0, 0%, 90%);
+    --success: hsl(120, 90%, 50%);
+    --success-shadow: hsl(120, 20%, 10%);
 }
 
 :root[data-theme=dark] {
     --primary: hsl(0, 0%, 0%);
     --on-primary: hsl(0, 0%, 100%);
+    --on-primary-shadow: hsl(0, 0%, 78%);
     --secondary: hsl(0, 0%, 5%);
     --on-secondary: hsl(0, 0%, 95%);
     --terciary: hsl(0, 0%, 15%);
     --on-terciary: hsl(0, 0%, 85%);
     --terciary-border: hsl(0, 0%, 10%);
+    --success: hsl(120, 100%, 50%);
+    --success-shadow: hsl(120, 100%, 50%);
 
 }
 

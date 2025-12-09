@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { purchaseButton = () => alert("not implemented") } = defineProps<{
+const { purchaseButton } = defineProps<{
   purchaseButton?: () => void;
 }>();
 </script>
@@ -21,13 +21,13 @@ const { purchaseButton = () => alert("not implemented") } = defineProps<{
 .purchase-button {
   font-size: 2em;
   padding: 1rem;
-  background-color: hsl(19, 79%, 62%);
-  color: hsla(0, 0%, 100%, 0.954);
+  background-color: var(--terciary);
+  color: var(--on-terciary);
   border: 0;
   border-radius: 0.8rem;
 }
 .purchase-button:active {
-  background-color: hsl(19, 79%, 40%);
+  background-color: var(--secondary);
   transform: scale(99%);
 }
 </style>

@@ -100,10 +100,7 @@ export async function addItem(product_id: number) {
   console.log(res)
 }
 
-let modifiedProductsList: IProductQuantity[] = []
-let time: number = 0
-
-export async function sendChangedProducts() {
+export async function sendChangedProducts(modifiedProductsList: IProductQuantity[]) {
   if (modifiedProductsList.length < 1) {
     console.log("no changes")
     return
@@ -124,21 +121,7 @@ export async function sendChangedProducts() {
   }
 }
 
-export async function changeProduct(product: IProductQuantity, timeout: number) {
-  const i = modifiedProductsList.findIndex(value => value.Id === product.Id) 
-  if (i >= 0 ) {
-    modifiedProductsList[i]!.Quantity = product.Quantity
-  } 
-  else {
-    modifiedProductsList.push(product)
-  }
-  if (time != 0) {
-    clearTimeout(time)
-    time = 0
-  }
-  time = setTimeout(sendChangedProducts, timeout)
-  
-}
+
 
 export async function postLoginUser(user: ILoginUser) {
   let res = await axios.post(baseUrl + "/login/user", {

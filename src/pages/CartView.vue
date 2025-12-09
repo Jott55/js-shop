@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import {
-  changeProduct as changeProduct,
-  getProductCart,
-  getUser,
-  sendChangedProducts,
-} from "@/fetchdata";
-import { ref, watch } from "vue";
+import { getProductCart, getUser, sendChangedProducts } from "@/fetchdata";
+import { onUnmounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import CartContainer from "@/components/Cart/CartContainer.vue";
 import CartPayment from "@/components/Cart/CartPayment.vue";
@@ -32,13 +27,24 @@ const fetchdata = async () => {
   }
 };
 
+const modifedProductsList: IProductQuantity[] = [];
+
 const whenChange = (product: IProductQuantity) => {
   changeProduct(product, updateTimeout);
 };
 
-const whenPurchase = () => {
-  sendChangedProducts();
-};
+function changeProduct(product: IProductQuantity, timeout: number) {
+  const i = modifedProductsList.findIndex((value) => value.Id === product.Id);
+  if (i >= 0) {
+    modifedProductsList[i]!.Quantity = product.Quantity;
+  } else {
+    modifedProductsList.push(product);
+  }
+}
+
+onUnmounted(() => {
+  sendChangedProducts(modifedProductsList);
+});
 
 const route = useRoute();
 watch(
@@ -53,6 +59,8 @@ watch(
 <template>
   <div v-if="!error && !loading">
     <CartContainer :products="products" :change-product="whenChange" />
-    <CartPayment :purchase-button="whenPurchase" />
+    <RouterLink to="/purchase">
+      <CartPayment />
+    </RouterLink>
   </div>
 </template>

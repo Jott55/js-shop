@@ -106,10 +106,10 @@ watch(timeButtonDown, () => {
   align-items: center;
   overflow: scroll;
   column-gap: 2rem;
-  border: thick solid hsl(40, 90%, 70%);
+  /* border: thick solid hsl(40, 90%, 70%); */
   margin: 1rem 1rem;
-  background-color: hsl(48, 90%, 70%);
-  text-shadow: 1px 1px 2px hsl(0, 10%, 89%);
+  background-color: var(--secondary);
+  /* text-shadow: 1px 1px 2px hsl(0, 10%, 89%); */
 }
 
 .quantity-text {
@@ -134,12 +134,12 @@ watch(timeButtonDown, () => {
   border: 0;
   /* border: 1px solid black; */
 
-  color: hsl(12, 77%, 49%);
+  color: var(--on-terciary);
 }
 
 .quantity-button:active {
   transition: color 100ms;
-  color: antiquewhite;
+  color: var(--terciary);
 }
 
 .image {
@@ -152,7 +152,7 @@ watch(timeButtonDown, () => {
     "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1.5em;
-  color: hsl(0, 0%, 5%);
+  color: var(--on-secondary);
 }
 
 .price {
@@ -160,7 +160,7 @@ watch(timeButtonDown, () => {
   font-family:
     "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: hsla(111, 100%, 52%, 0.793);
-  text-shadow: 1px 1px 2px rgb(50, 47, 47);
+  color: var(--success);
+  text-shadow: 1px 1px 2px var(--success-shadow);
 }
 </style>

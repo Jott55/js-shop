@@ -42,13 +42,14 @@ const { product = new Product() } = defineProps<{
   padding: 0;
   margin-top: 1rem;
   margin-bottom: 0;
+  font-size: 2em;
 }
 
 .product-price {
   padding: 0;
   margin-top: 1rem;
-  color: hsla(0, 0%, 0%, 0.793);
-  text-shadow: 1px 1px 2px rgb(179, 179, 179);
+  color: var(--on-primary);
+  text-shadow: 1px 1px 2px var(--on-primary-shadow);
 }
 
 .product-image {
@@ -64,6 +65,7 @@ const { product = new Product() } = defineProps<{
   margin-bottom: 1rem;
   background: none;
   border: none;
-  color: green;
+  color: var(--success);
+  text-shadow: 1px 1px 1px var(--success-shadow);
 }
 </style>

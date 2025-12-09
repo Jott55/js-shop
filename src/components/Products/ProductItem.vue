@@ -78,8 +78,8 @@ const {
   min-height: 5rem;
   font-size: 2em;
   padding: 1rem;
-  background-color: hsl(120, 77%, 54%);
-  color: rgb(255, 255, 255);
+  background-color: var(--success);
+  color: var(--on-primary);
   text-shadow: 1px 1px 2px black;
 }
 
@@ -91,7 +91,7 @@ const {
 .product-price {
   font-family: "Courier New", Courier, monospace;
   font-size: 2em;
-  color: hsla(0, 0%, 0%, 0.793);
+  color: var(--on-primary);
   text-shadow: 1px 1px 2px rgb(179, 179, 179);
 }
 </style>
