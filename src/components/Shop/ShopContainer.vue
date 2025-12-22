@@ -8,9 +8,12 @@ const { shopItems } = defineProps<{
 </script>
 
 <template>
-  <div class="shop-container">
-    <div class="shop-item" v-for="item in shopItems">
-      <ShopItem :key="item.Id" :product="item" />
+  <!-- no div in here would make shop-container available for parent classes -->
+  <div>
+    <div class="shop-container">
+      <div class="shop-item" v-for="item in shopItems">
+        <ShopItem :key="item.Id" :product="item" />
+      </div>
     </div>
   </div>
 </template>

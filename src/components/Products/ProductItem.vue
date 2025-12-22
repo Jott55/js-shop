@@ -79,13 +79,14 @@ const {
   font-size: 2em;
   padding: 1rem;
   background-color: var(--success);
-  color: var(--on-primary);
+  color: var(--on-success);
   text-shadow: 1px 1px 2px black;
+  border: none;
 }
 
 .product-button:active {
   transform: scale(99%);
-  background-color: hsl(120, 77%, 40%);
+  background-color: var(--success-trigger);
 }
 
 .product-price {
